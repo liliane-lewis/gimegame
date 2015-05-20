@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block corpo %}
+    {% if session.logado %}
+        <h2>Meus Jogos</h2>
+        <ul class="jogos">
+            {% for meujogo in meus_jogos %}
+                <li>{{ meujogo.nome }} {{ meujogo.genero }} {{ meujogo.console }} {{ meujogo.ano }} <a href="/editarjogo">Editar</a> <a href="/excluirjogo">Excluir</a>
+            {% else %}
+                <li><em>Nenhuma entrada.</em>
+            {% endfor %}
+        </ul>
+        <a href="/adicionarjogo">Adicionar Jogo</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block corpo %}
+  <h2>Adicionar Jogo</h2>
+  {% if erro %}<p class="erro"><strong>Erro:</strong> {{ erro }}{% endif %}
+  <form action="{{ url_for('adicionar_jogo') }}" method="post">
+    <dl>
+      <dt>Nome:
+      <dd><input type="text" name="nome">
+      <dt>Genero:
+      <dd><input type="text" name="genero">
+      <dt>Console:
+      <dd><input type="text" name="console">
+      <dt>Ano:
+      <dd><input type="text" name="ano">
+
+      <dd><input type="submit" value="Adicionar">
+    </dl>
+  </form>
+{% endblock %}

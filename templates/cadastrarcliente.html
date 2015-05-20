@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block corpo %}
+  <h2>Novo Cliente</h2>
+  {% if erro %}<p class="erro"><strong>Erro:</strong> {{ erro }}{% endif %}
+  <form action="{{ url_for('cadastrar_cliente') }}" method="post">
+    <dl>
+      <dt>Login:
+      <dd><input type="text" name="login">
+      <dt>Senha:
+      <dd><input type="password" name="senha">
+      <dt>Nome:
+      <dd><input type="text" name="nome">
+      <dt>CPF:
+      <dd><input type="text" name="cpf">
+      <dt>Email:
+      <dd><input type="text" name="email">
+      <dt>Telefone:
+      <dd><input type="text" name="telefone">
+      <dt>Endereço:
+      <dd><input type="text" name="endereco">
+
+      <dd><input type="submit" value="Adicionar">
+    </dl>
+  </form>
+{% endblock %}
