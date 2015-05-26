@@ -58,6 +58,17 @@ def adicionar_jogo():
         return redirect('meusjogos')
     return render_template('adicionarjogo.html')
 
+@app.route('/cadastrarcliente', methods=['GET', 'POST'])
+def cadastrar_cliente():
+    if request.method == 'POST':
+        #usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+        cliente = Cliente(request.form['login'], request.form['senha'], request.form['nome'], request.form['cpf'], \
+                          request.form['email'], request.form['telefone'], request.form['endereco'] )
+        cliente.CadastrarUsuario(cliente)
+        return redirect('meusjogos')
+    return render_template('cadastrarcliente.html')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     erro = None

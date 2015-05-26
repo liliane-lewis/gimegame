@@ -23,7 +23,11 @@ class Cliente(Pessoa):
         self.endereco = endereco
         self.avaliacao = avaliacao
 
-    def CadastrarUsuario(self):
+    def CadastrarUsuario(self, Cliente):
+        db.session.add(Cliente)
+        db.session.commit()
+
+        
         return
     def GerenciarJogos(self):
         return

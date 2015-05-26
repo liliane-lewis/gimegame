@@ -6,6 +6,7 @@
   <h1>Gimegame</h1>
   <div class="metanav">
   {% if not session.logado %}
+    <a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a>
     <a href="{{ url_for('login') }}">login</a>
   {% else %}
     <a href="{{ url_for('home') }}">home</a>
