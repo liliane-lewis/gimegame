@@ -19,7 +19,7 @@ UC2: Gerenciar Lista Pessoal de Jogos:
 
 
 #**Não focar:**
-  Funcionário:
+  ##**Funcionário:**
     * UC12: Validar Novo Cadastro de Jogo
     * UC13: Validar Originalidade de Jogo
     * UC15: Gerenciar Dados do Sistema
@@ -27,5 +27,5 @@ UC2: Gerenciar Lista Pessoal de Jogos:
     * UC17: Confrmar Pagamento
     * UC18: Entregar Pedido
     
-    Cliente:
+    ##**Cliente:**
       * UC11: Avaliar Jogo
