@@ -3,7 +3,7 @@
 #**To be done:**
 
 ##**1. Cliente**
-UC2: Gerenciar Lista Pessoal de Jogos:
+* UC2: Gerenciar Lista Pessoal de Jogos:
   * UC5: Editar Jogo na Lista Pessoal
   * UC6: Excluir Jogo na Lista Pessoal
 
