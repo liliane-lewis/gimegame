@@ -39,8 +39,10 @@ class Cliente(Pessoa):
         db.session.commit()
         return
 
-    def EditarJogoPessoal(self):
+    def EditarJogoPessoal(self, jogo):
+        db.session.commit()
         return
+
     def RemoverJogoPessoal(self):
         return
     def FazerPropostaTroca(self):

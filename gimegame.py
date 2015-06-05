@@ -45,9 +45,24 @@ def exibir_meus_jogos():
 def home():
     return render_template('home.html')
 
+
 @app.route('/comprar')
 def comprar():
     return 'A ser implementado'
+
+@app.route('/editarjogo/<int:id>', methods=['GET', 'POST'])
+def editarjogo(id):
+    jogo=Jogo.query.get(id)
+    usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+    if request.method == 'POST':
+        jogo.nome = request.form['nome']
+        jogo.genero = request.form['genero']
+        jogo.console = request.form['console']
+        jogo.ano = request.form['ano']
+        usuario.EditarJogoPessoal(jogo)
+        return redirect('meusjogos')
+
+    return render_template('editarjogo.html', meujogo=jogo)
 
 @app.route('/adicionarjogo', methods=['GET', 'POST'])
 def adicionar_jogo():
