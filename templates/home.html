@@ -3,5 +3,8 @@
     {% if  session.logado %}
         <a href="/catalogo">Catálogo de Jogos</a>
         <a href="/meusjogos">Meus Jogos</a>
+        {% if  session.admin %}
+            <a href="/cadastrarfuncionario">Cadastro Funcionario</a>
+        {% endif %}
     {% endif %}
 {% endblock %}

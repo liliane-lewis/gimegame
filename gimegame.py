@@ -1,4 +1,3 @@
-__author__ = 'liliane'
 # coding: utf-8
 
 from flask import Flask, render_template,request,session,flash,redirect,url_for
@@ -8,6 +7,7 @@ from config import app, db
 from jogo import Jogo
 from Pessoa import Pessoa
 from Cliente import Cliente
+from Funcionario import Funcionario
 
 #@app.teardown_appcontext
 #def shutdown_session(exception=None):
@@ -93,6 +93,16 @@ def cadastrar_cliente():
         return redirect('meusjogos')
     return render_template('cadastrarcliente.html')
 
+@app.route('/cadastrarfuncionario', methods=['GET', 'POST'])
+def cadastrar_funcionario():
+    if request.method == 'POST':
+        #usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+        funcionario = Funcionario(request.form['login'], request.form['senha'], request.form['nome'], request.form['cpf'], \
+                          request.form['email'], request.form['telefone'], request.form['endereco'] )
+        funcionario.CadastrarFuncionario(funcionario)
+        return redirect('catalogo')
+    return render_template('cadastrarfuncionario.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -100,14 +110,26 @@ def login():
     if request.method == 'POST':
 
         usuario = Pessoa.query.filter(Pessoa.login == request.form['username'], Pessoa.senha == request.form['password']).first()
+
+        admin = Funcionario.query.filter(Funcionario.login == request.form['username']).first()
+
+
         #print(request.form['username'])
         #print(request.form['password'])
         #print(usuario)
         if not usuario:
             error = 'Usuário inválido ou senha inválida'
+            flash('Usuario invalido ou senha invalida')
         else:
+
             session['logado'] = True
             session['login'] = request.form['username']
+            if admin:
+                session['admin'] = True
+            else:
+                session['admin'] = False
+            return redirect(url_for('home'))
+
             flash('Login OK')
             return redirect(url_for('home'))
     return render_template('login.html', erro=erro)

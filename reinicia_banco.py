@@ -2,15 +2,20 @@ import config
 import jogo
 import Pessoa
 import Cliente
+import Funcionario
 
 config.db.drop_all()
 config.db.create_all()
+#config.db.create_table(funcionario)
+
+f1 = Funcionario.Funcionario('admin','senhaAdmin','Admin')
 
 p1 = Cliente.Cliente('liliane','senhateste','Liliane')
 p2 = Cliente.Cliente('andre','senhateste','Andre')
 p3 = Cliente.Cliente('arthur','senhateste','Arthur')
 p4 = Cliente.Cliente('victor','senhateste','Victor')
 
+config.db.session.add(f1)
 config.db.session.add(p1)
 config.db.session.add(p2)
 config.db.session.add(p3)
@@ -31,5 +36,5 @@ config.db.session.add(j1)
 config.db.session.add(j2)
 config.db.session.add(j3)
 config.db.session.add(j4)
-#config.db.session.add(j2)
+config.db.session.add(j2)
 config.db.session.commit()
