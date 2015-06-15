@@ -5,7 +5,7 @@
 ##**1. Cliente**
 * UC2: Gerenciar Lista Pessoal de Jogos:
   * UC5: Editar Jogo na Lista Pessoal - OK
-  * UC6: Excluir Jogo na Lista Pessoal
+  * UC6: Excluir Jogo na Lista Pessoal - OK
 
 ##**2. Funcionário:**
 * UC14: Gerenciar Lista Geral de Jogos

@@ -4,7 +4,7 @@
         <h2>Meus Jogos</h2>
         <ul class="jogos">
             {% for meujogo in meus_jogos %}
-                <li>{{ meujogo.nome }} {{ meujogo.genero }} {{ meujogo.console }} {{ meujogo.ano }} <a href="/editarjogo/{{meujogo.id}}">Editar</a> <a href="/excluirjogo">Excluir</a>
+                <li>{{ meujogo.nome }} {{ meujogo.genero }} {{ meujogo.console }} {{ meujogo.ano }} <a href="/editarjogo/{{meujogo.id}}">Editar</a> <a href="/removerjogo/{{meujogo.id}}"">Excluir</a>
             {% else %}
                 <li><em>Nenhuma entrada.</em>
             {% endfor %}

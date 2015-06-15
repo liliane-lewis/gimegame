@@ -1,6 +1,4 @@
 from Pessoa import Pessoa
-
-__author__ = 'liliane'
 from config import db
 
 
@@ -26,9 +24,8 @@ class Cliente(Pessoa):
     def CadastrarUsuario(self, Cliente):
         db.session.add(Cliente)
         db.session.commit()
-
-        
         return
+
     def GerenciarJogos(self):
         return
     def CadastrarNovoJogo(self):
@@ -43,7 +40,9 @@ class Cliente(Pessoa):
         db.session.commit()
         return
 
-    def RemoverJogoPessoal(self):
+    def RemoverJogoPessoal(self, jogo):
+        db.session.delete(jogo)
+        db.session.commit()
         return
     def FazerPropostaTroca(self):
         return

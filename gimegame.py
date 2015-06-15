@@ -64,6 +64,16 @@ def editarjogo(id):
 
     return render_template('editarjogo.html', meujogo=jogo)
 
+@app.route('/removerjogo/<int:id>', methods=['GET'])
+def removerjogo(id):
+    jogo=Jogo.query.get(id)
+    usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+    usuario.RemoverJogoPessoal(jogo)
+    return redirect('meusjogos')
+
+    #return render_template('editarjogo.html', meujogo=jogo)
+
+
 @app.route('/adicionarjogo', methods=['GET', 'POST'])
 def adicionar_jogo():
     if request.method == 'POST':
