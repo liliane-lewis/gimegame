@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block corpo %}
+  <h2>Editar Jogo do Catalogo Geral</h2>
+  {% if erro %}<p class="erro"><strong>Erro:</strong> {{ erro }}{% endif %}
+  <form action="/editarcatalogo/{{jogo.id}}" method="post">
+    <dl>
+      <dt>Nome:
+      <dd><input type="text" name="nome" value="{{ jogo.nome }}">
+      <dt>Genero:
+      <dd><input type="text" name="genero" value="{{ jogo.genero }}">
+      <dt>Console:
+      <dd><input type="text" name="console" value="{{ jogo.console }}">
+      <dt>Ano:
+      <dd><input type="text" name="ano" value="{{ jogo.ano }}">
+
+      <dd><input type="submit" value="Salvar">
+    </dl>
+  </form>
+{% endblock %}

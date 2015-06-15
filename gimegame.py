@@ -34,6 +34,12 @@ def exibir_jogos():
     jogos = Jogo.query.all()
     return render_template('catalogo.html', jogos=jogos)
 
+@app.route('/gerenciarcatalogo')
+def gerenciar_jogos():
+    jogos = Jogo.query.all()
+    return render_template('gerenciarcatalogo.html', jogos=jogos)
+
+
 @app.route('/meusjogos')
 def exibir_meus_jogos():
     usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
@@ -64,12 +70,36 @@ def editarjogo(id):
 
     return render_template('editarjogo.html', meujogo=jogo)
 
+@app.route('/editarcatalogo/<int:id>', methods=['GET', 'POST'])
+def editarcatalogo(id):
+    jogo=Jogo.query.get(id)
+    funcionario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+    if request.method == 'POST':
+        jogo.nome = request.form['nome']
+        jogo.genero = request.form['genero']
+        jogo.console = request.form['console']
+        jogo.ano = request.form['ano']
+        funcionario.EditarCatalogo(jogo)
+        return redirect('gerenciarcatalogo')
+
+    return render_template('editarcatalogo.html', jogo=jogo)
+
+
 @app.route('/removerjogo/<int:id>', methods=['GET'])
 def removerjogo(id):
     jogo=Jogo.query.get(id)
     usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
     usuario.RemoverJogoPessoal(jogo)
     return redirect('meusjogos')
+
+
+@app.route('/removercatalogo/<int:id>', methods=['GET'])
+def removercatalogo(id):
+    jogo=Jogo.query.get(id)
+    funcionario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+    funcionario.RemoverCatalogo(jogo)
+    return redirect('gerenciarcatalogo')
+
 
     #return render_template('editarjogo.html', meujogo=jogo)
 

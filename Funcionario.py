@@ -27,8 +27,17 @@ class Funcionario(Pessoa):
         return
     def ValidarOriginalidadeJogo(self):
         return
-    def GerenciarCatalogoGeral(self):
+
+    def EditarCatalogo(self, jogo):
+        db.session.commit()
         return
+    def RemoverCatalogo(self, jogo):
+        db.session.delete(jogo)
+        db.session.commit()
+        return
+
+ #   def GerenciarCatalogoGeral(self):
+ #       return
     def GerenciarLoja(self):
         return
     def GerenciarPedidos(self):

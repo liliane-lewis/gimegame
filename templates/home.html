@@ -1,10 +1,14 @@
 {% extends "layout.html" %}
 {% block corpo %}
     {% if  session.logado %}
-        <a href="/catalogo">Catálogo de Jogos</a>
-        <a href="/meusjogos">Meus Jogos</a>
-        {% if  session.admin %}
-            <a href="/cadastrarfuncionario">Cadastro Funcionario</a>
+        <!-- Usuarios que nao sao admin -->
+        {% if  not session.admin %}
+                <a href="/catalogo">Catálogo de Jogos</a>
+                <a href="/meusjogos">Meus Jogos</a>
+        {% else %}
+                <a href="/gerenciarcatalogo">Catálogo Geral de Jogos</a>
+                <a href="/cadastrarfuncionario">Cadastro Funcionario</a>
         {% endif %}
+
     {% endif %}
 {% endblock %}

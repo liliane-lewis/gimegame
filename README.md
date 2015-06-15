@@ -8,9 +8,9 @@
   * UC6: Excluir Jogo na Lista Pessoal - OK
 
 ##**2. Funcionário:**
-* UC14: Gerenciar Lista Geral de Jogos
-  * Editar Jogo na Lista Geral
-  * Excluir Jogo na Lista Geral
+* UC14: Gerenciar Lista Geral de Jogos OK
+  * Editar Jogo na Lista Geral OK
+  * Excluir Jogo na Lista Geral OK
   
 ###**3. UC9: Comprar Jogo:**
 * UC7: Fazer Proposta de Troca de Jogo
