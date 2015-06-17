@@ -25,16 +25,16 @@ config.db.session.commit()
 print p1.id
 
 
-j1 = jogo.Jogo(p1.id,'Sonic','Arcade','Megadrive',1990)
-j2 = jogo.Jogo(p1.id,'The Legend of Zelda: The Ocarina of Time','Arcade','Nintendo',1990)
-j3 = jogo.Jogo(p2.id,'Super Mario Kart','Arcade','Wii',1990)
-j4 = jogo.Jogo(p2.id,'Doom','Arcade','PC',1990)
-j5 = jogo.Jogo(p2.id,'Street Fighter','Arcade','Super Nintendo',1990)
+j1 = jogo.Jogo(p1.id,'Sonic','Arcade','Megadrive',1990, 'Venda','0')
+j2 = jogo.Jogo(p1.id,'The Legend of Zelda: The Ocarina of Time','Arcade','Nintendo',1990, 'Venda', '52,00')
+j3 = jogo.Jogo(p2.id,'Super Mario Kart','Arcade','Wii',1990,'Venda', '100,50')
+j4 = jogo.Jogo(p2.id,'Doom','Arcade','PC',1990, 'Troca','0')
+j5 = jogo.Jogo(p2.id,'Street Fighter','Arcade','Super Nintendo',1990, 'Troca','0')
 
 #j2 = jogo.Jogo(p1.id,'Pacman','Arcade','Atari',1980)
 config.db.session.add(j1)
 config.db.session.add(j2)
 config.db.session.add(j3)
 config.db.session.add(j4)
-config.db.session.add(j2)
+config.db.session.add(j5)
 config.db.session.commit()
