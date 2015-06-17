@@ -1,14 +1,36 @@
 {% extends "layout.html" %}
 {% block corpo %}
     {% if session.logado %}
-        <h2>Meus Jogos</h2>
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8 content content-lighter">
+        <div class="content-title text-center">
+            <h2>Meus Jogos</h2>
+        </div>
         <ul class="jogos">
             {% for meujogo in meus_jogos %}
-                <li>{{ meujogo.nome }} {{ meujogo.genero }} {{ meujogo.console }} {{ meujogo.ano }} {{ meujogo.operacao }} {{ meujogo.valor }} <a href="/editarjogo/{{meujogo.id}}">Editar</a> <a href="/excluirjogo">Excluir</a>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2> {{ meujogo.nome }} </h2>
+                        {{ meujogo.genero }} {{ meujogo.console }} {{ meujogo.ano }} {{ meujogo.operacao }} {{ meujogo.valor }}
+                    </div>
+                    <br> <br>
+                    <div class="col-md-4">
+                        <a class="btn btn-default" href="/editarjogo/{{meujogo.id}}">Editar</a>
+                    <!-- </div> -->
+                    <!-- <div class="col-md-2"> -->
+                        <a class="btn btn-danger" href="/excluirjogo">Excluir</a>
+                    </div>
+                </div>
             {% else %}
                 <li><em>Nenhuma entrada.</em>
             {% endfor %}
         </ul>
-        <a href="/adicionarjogo">Adicionar Jogo</a>
+        <br>
+        <!-- <div class="col-md-4"></div> -->
+        <div class="text-center">
+            <a class="btn btn-primary" href="/adicionarjogo">Adicionar Jogo</a>
+        </div>
+        <!-- <div class="col-md-4"></div> -->
     {% endif %}
 {% endblock %}

@@ -1,24 +1,56 @@
 {% extends "layout.html" %}
 {% block corpo %}
+<div class="col-md-2"> </div>
+<div class="col-md-8 content">
   <h2>Editar Jogo</h2>
-  {% if erro %}<p class="erro"><strong>Erro:</strong> {{ erro }}{% endif %}
+  {% if erro %}
+    <p class="erro">
+      <strong>Erro:</strong> {{ erro }}
+    </p>
+  {% endif %}
+  
   <form action="/editarjogo/{{meujogo.id}}" method="post">
-    <dl>
-      <dt>Nome:
-      <dd><input type="text" name="nome" value="{{ meujogo.nome }}">
-      <dt>Genero:
-      <dd><input type="text" name="genero" value="{{ meujogo.genero }}">
-      <dt>Console:
-      <dd><input type="text" name="console" value="{{ meujogo.console }}">
-      <dt>Ano:
-      <dd><input type="text" name="ano" value="{{ meujogo.ano }}">
-      <dt>Operação:
-      <dd><input type="text" name="operacao" value="{{ meujogo.operacao }}">
-      <dt>Valor:
-      <dd><input type="text" name="valor" value="{{ meujogo.valor }}">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="nameInput">Nome</label>
+          <input class="form-control" id="nameInput" type="text" name="nome" value="{{ meujogo.nome }}" placeholder="Nome">
+        </div>
+      
+        <div class="form-group">
+          <label for="genreInput">Gênero</label>
+          <input class="form-control" id="genreInput" type="text" name="genero" value="{{ meujogo.genero }}" placehoder="Gênero">
+        </div>
+
+        <div class="form-group">
+          <label for="consoleInput">Console</label>
+          <input class="form-control" id="conoleInput"  type="text" name="console" value="{{ meujogo.console }}" placeholder="Console">
+        </div>
 
 
-      <dd><input type="submit" value="Salvar">
-    </dl>
+        <div class="form-group">
+          <label for="yearInput">Ano</label>
+          <input class="form-control" id="yearInput" type="text" name="ano" value="{{ meujogo.ano }}" placeholder="Ano">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="operationInput">Operação</label>
+          <input class="form-control" id="operationInput" type="text" name="operacao" value="{{ meujogo.operacao }}" placeholder="Operação">
+        </div>
+
+        <div class="form-group">
+          <label for="priceInput">Valor</label>
+          <input class="form-control" id="priceInput" type="text" name="valor" value="{{ meujogo.valor }}" placeholder="Valor"> 
+        </div>
+
+        <br>
+        <div class="text-center">
+          <input class="btn btn-primary" type="submit" value="Salvar">
+        </div>
+    
+    
   </form>
 {% endblock %}

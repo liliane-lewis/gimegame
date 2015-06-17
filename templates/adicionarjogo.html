@@ -1,23 +1,56 @@
 {% extends "layout.html" %}
 {% block corpo %}
-  <h2>Adicionar Jogo</h2>
-  {% if erro %}<p class="erro"><strong>Erro:</strong> {{ erro }}{% endif %}
-  <form action="{{ url_for('adicionar_jogo') }}" method="post">
-    <dl>
-      <dt>Nome:
-      <dd><input type="text" name="nome">
-      <dt>Genero:
-      <dd><input type="text" name="genero">
-      <dt>Console:
-      <dd><input type="text" name="console">
-      <dt>Ano:
-      <dd><input type="text" name="ano">
-      <dt>Operação:
-      <dd><input type="text" name="operacao">
-      <dt>Valor:
-      <dd><input type="text" name="valor">
+<div class="col-md-2"> </div>
+<div class="col-md-8 content">
+	<h2>Adicionar Jogo</h2>
+	{% if erro %}
+	<p class="erro">
+  		<strong>Erro:</strong> {{ erro }}
+  	</p>
+	{% endif %}
 
-      <dd><input type="submit" value="Adicionar">
-    </dl>
+<form action="{{ url_for('adicionar_jogo') }}" method="post">
+	<div class="row">
+
+    <div class="col-md-6">
+        
+        <div class="form-group">
+        	<label for="nameInput">Nome</label>
+    		<input class="form-control" type="text" id="nameInput" name="nome" placeholder="Nome">
+    	</div>
+
+    	<div class="form-group">
+        	<label for="genreInput">Gênero</label>
+    		<input class="form-control" id="genreInput" type="text" name="genero" placeholder="Gênero">
+    	</div>
+
+    	<div class="form-group">
+        	<label for="consoleInput">Console</label>
+        	<input class="form-control" id="consoleInput" type="text" name="console" placeholder="Console">
+        </div>
+
+        <div class="form-group">
+        	<label for="yearInput">Ano</label>
+        	<input class="form-control" id="yearInput" type="text" name="ano" placeholder="Ano">
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+    	<div class="form-group">
+        	<label for="operationInput">Operação</label>
+        	<input class="form-control" id="operationInput" type="text" name="operacao" placeholder="Operação">
+        </div>
+
+    	<div class="form-group">
+        	<label for="priceInput">Valor</label>
+        	<input class="form-control" id="priceInput" type="text" name="valor" placeholder="Valor">
+        </div>   
+
+        <br>
+        <div class="text-center">
+        	<input class="btn btn-primary" type="submit" value="Adicionar">
+        </div>
+    </div>
   </form>
+</div>
 {% endblock %}

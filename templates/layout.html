@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
-        <h1>Gimegame</h1>
+        <h1 class="gimebrand">Gimegame</h1>
       </div>
       <br>
       <div class="col-md-10 nav nav-pills">
@@ -26,6 +26,11 @@
 </div>
   {% for mensagem in get_flashed_messages() %}
    <div class="flash">{{ mensagem }}</div>
+    <!--
+    <script type="text/javascript">
+    window.alert( {{ mensagem }} );
+    </script>
+    -->
   {% endfor %}
 
 <!-- inicio do corpo -->
