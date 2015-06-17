@@ -1,25 +1,59 @@
 {% extends "layout.html" %}
 {% block corpo %}
+<div class="col-md-2"> </div>
+<div class="col-md-8 content">
   <h2>Novo Cliente</h2>
-  {% if erro %}<p class="erro"><strong>Erro:</strong> {{ erro }}{% endif %}
-  <form action="{{ url_for('cadastrar_cliente') }}" method="post">
-    <dl>
-      <dt>Login:
-      <dd><input type="text" name="login">
-      <dt>Senha:
-      <dd><input type="password" name="senha">
-      <dt>Nome:
-      <dd><input type="text" name="nome">
-      <dt>CPF:
-      <dd><input type="text" name="cpf">
-      <dt>Email:
-      <dd><input type="text" name="email">
-      <dt>Telefone:
-      <dd><input type="text" name="telefone">
-      <dt>Endereço:
-      <dd><input type="text" name="endereco">
+  {% if erro %}
+    <p class="erro">
+      <strong>Erro:</strong> {{ erro }}
+    </p>
+  {% endif %}
 
-      <dd><input type="submit" value="Adicionar">
-    </dl>
+  <form action="{{ url_for('cadastrar_cliente') }}" method="post">
+    <div class="row">
+      
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="loginInput">Login</label>
+          <input class="form-control" id="loginInput" type="text" name="login" placeholder="Login">
+        </div>
+        <div class="form-group">
+          <label for="passwordInput">Senha</label>
+          <input class="form-control" id="passwordInput" type="password" name="senha" placeholder="Senha">
+        </div>
+        <div class="form-group">
+          <label for="nameInput">Nome</label>
+          <input class="form-control" id="nameInput" type="text" name="nome" placeholder="Nome">
+        </div>
+        <div class="form-group">  
+          <label for="cpfInput">CPF</label>
+          <input class="form-control" id="cpfInput" type="text" name="cpf" placeholder="CPF">
+        </div>
+      </div>
+    
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="emailInput">Email</label>
+          <input class="form-control" id="emailInput" type="text" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="phoneInput">Telefone</label>
+          <input class="form-control" id="phoneInput" type="text" name="telefone" placeholder="Telefone">
+        </div>
+        <div class="form-group">
+          <label for="addressInput">Endereço</label>
+          <input class="form-control" id="addressInput" type="text" name="endereco" placeholder="Endereço">
+        </div>
+        <div class="form-group">
+          <label for="fakeInput"></label>
+        </div>
+        <div class="text-center">
+          <input class="btn btn-default" type="submit" value="Adicionar">
+        </div>
+      </div>
+    
+    </div>
   </form>
+</div>
+<div class="col-md-2"> </div>
 {% endblock %}

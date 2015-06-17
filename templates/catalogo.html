@@ -1,13 +1,28 @@
 {% extends "layout.html" %}
 {% block corpo %}
     {% if session.logado %}
-        <h2>Catálogo de Jogos</h2>
+    <div class="col-md-2"></div>
+    <div class="col-md-8 content">
+        <div class="content-title text-center">
+            <h2>Catálogo de Jogos</h2>
+        </div>
         <ul class="jogos">
             {% for jogo in jogos %}
-                <li><h2>{{ jogo.nome }}</h2>{{ jogo.genero }} {{ jogo.console }} {{ jogo.ano }} <a href="/comprar">Comprar</a>
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>{{ jogo.nome }}</h2>{{ jogo.genero }} {{ jogo.console }} {{ jogo.ano }}
+                    </div>
+
+                    <div class="col-md-2">
+                        <br> <br>
+                        <a class="btn btn-primary" href="/comprar">Comprar</a>
+                    </div>
+                </div>
             {% else %}
-                <li><em>Nenhuma entrada.</em>
+                <li><em>Nenhuma entrada.</em></li>
             {% endfor %}
         </ul>
+    </div>
+    <div class="col-md-2"></div>
     {% endif %}
 {% endblock %}

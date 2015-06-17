@@ -1,21 +1,36 @@
 <!doctype html>
 <title>Gimegame</title>
 <link rel="stylesheet" type="text/css"
-      href="{{ url_for('static', filename='estilo.css') }}">
-<div class="pagina">
-  <h1>Gimegame</h1>
-  <div class="metanav">
-  {% if not session.logado %}
-    <a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a>
-    <a href="{{ url_for('login') }}">login</a>
-  {% else %}
-    <a href="{{ url_for('home') }}">home</a>
-    <a href="{{ url_for('logout') }}">logout</a>
+      href="{{ url_for('static', filename='bootstrap-3.3.5-dist/css/bootstrap.css') }}">
+<div class="navbar gimenav">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <h1>Gimegame</h1>
+      </div>
+      <br>
+      <div class="col-md-10 nav nav-pills">
+        {% block nav %}
+        {% endblock %}
 
-  {% endif %}
+        {% if session.logado %}
+          <li role="navigation"> <a href="{{ url_for('home') }}">Home</a> </li>
+          <li role="navigation"> <a href="{{ url_for('logout') }}">Logout</a> </li>
+        {% else %}
+          <li role="navigation"> <a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a> </li>
+          <li role="navigation"> <a href="{{ url_for('login') }}">Login</a> </li>
+        {% endif %}
+      </div>
+    </div>
   </div>
+</div>
   {% for mensagem in get_flashed_messages() %}
-    <div class="flash">{{ mensagem }}</div>
+   <div class="flash">{{ mensagem }}</div>
   {% endfor %}
+
+<!-- inicio do corpo -->
+<div class="container-fluid row">
+    
   {% block corpo %}{% endblock %}
+
 </div>
