@@ -9,25 +9,6 @@ from Pessoa import Pessoa
 from Cliente import Cliente
 from Funcionario import Funcionario
 from Pedido import Pedido
-#@app.teardown_appcontext
-#def shutdown_session(exception=None):
-#    db_session.remove()
-
-#def conectar_bd():
-#    return sqlite3.connect(app.config['DATABASE'])
-
-#def criar_bd():
-#    with closing(conectar_bd()) as bd:
-#        with app.open_resource('db/esquema.sql') as sql:
-#            bd.cursor().executescript(sql.read())
-#        bd.commit()
-#@app.before_request
-#def pre_requisicao():
-#    g.bd = conectar_bd()
-
-#@app.teardown_request
-#def encerrar_requisicao(exception):
-#    g.bd.close()
 
 @app.route('/catalogo')
 def exibir_jogos():
