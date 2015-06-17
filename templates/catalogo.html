@@ -11,11 +11,24 @@
                 <div class="row">
                     <div class="col-md-10">
                         <h2>{{ jogo.nome }}</h2>{{ jogo.genero }} {{ jogo.console }} {{ jogo.ano }}
-                    </div>
+
+                {% if jogo.operacao == 'Venda' %}
+
+                        <br><b>R$ {{ jogo.valor }}</b>
+                        </div>
 
                     <div class="col-md-2">
                         <br> <br>
                         <a class="btn btn-primary" href="/comprar">Comprar</a>
+                        
+                {% else %}
+                    </div>
+
+                    <div class="col-md-2">
+                        <br> <br>
+                        <a class="btn btn-primary" href="/trocar">Trocar</a>
+                {% endif %}
+
                     </div>
                 </div>
             {% else %}
