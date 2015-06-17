@@ -31,7 +31,9 @@ from Funcionario import Funcionario
 
 @app.route('/catalogo')
 def exibir_jogos():
-    jogos = Jogo.query.all()
+    ### Alteracao para mostrar apenas os jogos disponíveis de outros usuários
+    usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+    jogos = Jogo.query.filter(Jogo.proprietario != usuario.id).all()
     return render_template('catalogo.html', jogos=jogos)
 
 @app.route('/gerenciarcatalogo')
