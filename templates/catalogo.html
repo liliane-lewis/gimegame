@@ -13,22 +13,22 @@
                         <h2>{{ jogo.nome }}</h2>
                         <b>Gênero </b>
                         {{ jogo.genero }}
-
+                        <br>
                         <b>Console </b>
                         {{ jogo.console }}
-
+                        <br>
                         <b>Ano </b>
                         {{ jogo.ano }}
-
+                        <br>
                 {% if jogo.operacao == 'Venda' %}
 
                         <b> Preço: </b>
                         R$ {{ jogo.valor }}
-                    
+                        <br>
                     </div>
 
                     <div class="col-md-4 text-center">
-                    <br> <br>
+                    <br> <br> <br>
                         <a class="btn btn-primary" href="/comprar/{{ jogo.id }}">Comprar</a>
                         <a class="btn btn-default disabled" href="/trocar/{{ jogo.id }}">Trocar</a>
 
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-md-4 text-center">
-                    <br> <br>
+                    <br> <br> <br>
                         <a class="btn btn-default disabled" href="/comprar/{{ jogo.id }}">Comprar</a>
                         <a class="btn btn-primary" href="/trocar/{{ jogo.id }}">Trocar</a>
                     </div>

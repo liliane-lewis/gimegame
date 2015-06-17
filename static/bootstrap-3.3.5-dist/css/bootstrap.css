@@ -26,12 +26,12 @@
 .content-title
 {
   border-bottom: 1px solid rgba(0,0,0,0.1);
-
 }
 
 .gimenav
 {
   color: #1D6FA9;
+  background-color: #CEE7F9;
 }
 
 .vertical-center {
@@ -50,9 +50,8 @@ html {
 }
 body {
   margin: 0;
-  background-color: #ccc;
-  background-image: url(../res/bg.png);
-  background-size: 100% auto;
+  background-color:  #76A171;
+  background: url(../res/bg-small.png) no-repeat;
 }
 article,
 aside,
@@ -1128,7 +1127,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #7FB471;
 }
 input,
 button,
