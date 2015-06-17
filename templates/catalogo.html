@@ -9,27 +9,40 @@
         <ul class="jogos">
             {% for jogo in jogos %}
                 <div class="row">
-                    <div class="col-md-10">
-                        <h2>{{ jogo.nome }}</h2>{{ jogo.genero }} {{ jogo.console }} {{ jogo.ano }}
+                    <div class="col-md-8">
+                        <h2>{{ jogo.nome }}</h2>
+                        <b>Gênero </b>
+                        {{ jogo.genero }}
+
+                        <b>Console </b>
+                        {{ jogo.console }}
+
+                        <b>Ano </b>
+                        {{ jogo.ano }}
 
                 {% if jogo.operacao == 'Venda' %}
 
-                        <br><b>R$ {{ jogo.valor }}</b>
-                        </div>
+                        <b> Preço: </b>
+                        R$ {{ jogo.valor }}
+                    
+                    </div>
 
-                    <div class="col-md-2">
-                        <br> <br>
-                        <a class="btn btn-primary" href="/comprar">Comprar</a>
+                    <div class="col-md-4 text-center">
+                    <br> <br>
+                        <a class="btn btn-primary" href="/comprar/{{ jogo.id }}">Comprar</a>
+                        <a class="btn btn-default disabled" href="/trocar/{{ jogo.id }}">Trocar</a>
+
+                    </div>
 
                 {% else %}
                     </div>
 
-                    <div class="col-md-2">
-                        <br> <br>
-                        <a class="btn btn-primary" href="/trocar">Trocar</a>
-                {% endif %}
-
+                    <div class="col-md-4 text-center">
+                    <br> <br>
+                        <a class="btn btn-default disabled" href="/comprar/{{ jogo.id }}">Comprar</a>
+                        <a class="btn btn-primary" href="/trocar/{{ jogo.id }}">Trocar</a>
                     </div>
+                {% endif %}
                 </div>
             {% else %}
                 <li><em>Nenhuma entrada.</em></li>

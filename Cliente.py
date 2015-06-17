@@ -1,6 +1,6 @@
 from Pessoa import Pessoa
 from config import db
-
+from Pedido import *
 
 class Cliente(Pessoa):
     __tablename__ = 'cliente'
@@ -44,8 +44,22 @@ class Cliente(Pessoa):
         db.session.delete(jogo)
         db.session.commit()
         return
-    def FazerPropostaTroca(self):
+
+    def FazerPropostaTroca(self, jogo):
+        tipo = jogo.operacao
+        status = 'disponivel'
+        vendedor = jogo.proprietario
+        cliente = self.id
+        itens = 1
+        valor = jogo.valor
+
+        pedido = Pedido(tipo, status, vendedor, cliente, itens, valor)
+
+        db.session.add(pedido)
+        db.session.commit()
         return
+
+
     def RespostaPropostaTroca(self):
         return
     def ComprarJogo(self):

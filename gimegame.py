@@ -56,6 +56,15 @@ def home():
 def comprar():
     return 'A ser implementado'
 
+
+@app.route('/trocar/<int:id>')
+def trocar(id):
+    jogo = Jogo.query.get(id)
+    cliente = Cliente.query.filter(Cliente.login == session['login']).first()
+    cliente.FazerPropostaTroca(jogo)
+    return 'A ser implementado'
+
+
 @app.route('/adicionarjogo', methods=['GET', 'POST'])
 def adicionar_jogo():
     if request.method == 'POST':

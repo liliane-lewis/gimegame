@@ -3,6 +3,8 @@ import jogo
 import Pessoa
 import Cliente
 import Funcionario
+import Pedido
+
 
 config.db.drop_all()
 config.db.create_all()
