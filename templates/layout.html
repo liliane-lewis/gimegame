@@ -15,6 +15,7 @@
 
         {% if session.logado %}
           <li role="navigation"> <a href="{{ url_for('home') }}">Home</a> </li>
+          <li role="navigation"> <a href="{{ url_for('minhasPropostas') }}">Minhas propostas</a> </li>
           <li role="navigation"> <a href="{{ url_for('logout') }}">Logout</a> </li>
         {% else %}
           <li role="navigation"> <a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a> </li>

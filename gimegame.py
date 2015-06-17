@@ -8,7 +8,7 @@ from jogo import Jogo
 from Pessoa import Pessoa
 from Cliente import Cliente
 from Funcionario import Funcionario
-
+from Pedido import Pedido
 #@app.teardown_appcontext
 #def shutdown_session(exception=None):
 #    db_session.remove()
@@ -53,6 +53,13 @@ def exibir_meus_jogos():
 def home():
     return render_template('home.html')
 
+@app.route('/propostas')
+def minhasPropostas():
+    usuario = Cliente.query.filter(Cliente.login == session['login']).first()
+    propostas = pesquisa_pedidos_usuario(usuario.id)
+    como_cliente = propostas[0]
+    como_vendedor = propostas[1]
+    return render_template('propostas.html',como_cliente=como_cliente, como_vendedor=como_vendedor)
 
 @app.route('/comprar')
 def comprar():
@@ -63,7 +70,7 @@ def trocar(id):
     jogo = Jogo.query.get(id)
     cliente = Cliente.query.filter(Cliente.login == session['login']).first()
     cliente.FazerPropostaTroca(jogo)
-    return 'A ser implementado'
+    return render_template('catalogo.html')
 
 @app.route('/adicionarjogo', methods=['GET', 'POST'])
 def adicionar_jogo():
@@ -185,6 +192,10 @@ def logout():
 def pesquisa_jogos_usuario(id):
     return Jogo.query.filter(Jogo.proprietario == id).all()
 
+def pesquisa_pedidos_usuario(id):
+    pedidos_como_cliente = Pedido.query.filter(Pedido.cliente == id).all()
+    pedidos_como_vendedor = Pedido.query.filter(Pedido.vendedor == id).all()
+    return (pedidos_como_cliente, pedidos_como_vendedor)
 
 if __name__ == '__main__':
     app.run()

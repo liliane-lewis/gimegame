@@ -2,7 +2,7 @@ __author__ = 'liliane'
 
 from config import db
 
-class Pedido:
+class Pedido(db.Model):
 	__tablename__ = 'pedidos'
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	tipo = db.Column(db.String(50))
@@ -12,7 +12,6 @@ class Pedido:
 	itens = db.Column(db.Integer)
 	valor = db.Column(db.Integer)
 
-	
 
 	def __init__(self, tipo, status, vendedor, cliente, itens, valor):
 		self.tipo = tipo

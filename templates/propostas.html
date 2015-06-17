@@ -1,0 +1,53 @@
+{% if session.logado %}
+{% extends "layout.html" %}
+{% block corpo %}
+<div class="col-md-1"></div>
+    <div class="col-md-4 content content-lighter">
+        <div class="content-title text-center">
+    		<h2> Propostas enviadas </h2>
+    	</div>
+		<br>
+		{% for proposta in como_cliente %}
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<b> ID Vendedor: </b> {{ proposta.vendedor }}
+				<br>
+				<b> Tipo: </b> {{ proposta.tipo }}
+				<br>
+			</div>
+		</div>
+		<br>
+		{% endfor %}
+
+	</div>
+
+<div class="col-md-2"></div>
+
+	<div class="col-md-4 content content-lighter">
+	    <div class="content-title text-center">
+			<h2> Propostas recebidas </h2>
+		</div>
+		<br>
+		{% for proposta in como_vendedor %}
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-4">
+				<b> ID Cliente </b> {{ proposta.cliente}}
+				<br>
+				<b> Tipo: </b> {{ proposta.tipo }}
+				<br>
+			</div>
+				
+			<div class="col-md-6">
+				<a class="btn btn-primary" href="/aceitarProposta/{{proposta.id}}"> Aceitar </a>
+				<a class="btn btn-danger" href="/recusarProposta/{{proposta.id}}"> Recusar </a>
+			</div>
+		</div>
+		<br>
+		{% endfor %}
+
+	</div>
+<div class="col-md-1"></div>
+{% endblock %}
+{% endif %}
