@@ -37,8 +37,15 @@
     
     <div class="col-md-6">
     	<div class="form-group">
-        	<label for="operationInput">Operação</label>
-        	<input class="form-control" id="operationInput" type="text" name="operacao" placeholder="Operação">
+
+				<label for="operationInput">Operação</label>
+				<!--input class="form-control" id="operationInput" type="text" name="operacao" placeholder="Operação"-->
+				<div>
+					<label class="radio-inline"><input id="operationInput" type="radio" name="operacao" value="Venda" checked>Venda</label>
+
+					<label class="radio-inline"><input id="operationInput" type="radio" name="operacao" value="Troca">Troca</label>
+				</div>
+
         </div>
 
     	<div class="form-group">
