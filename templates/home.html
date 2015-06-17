@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
+
 {% block nav %}
-    
+  
   {% if  session.logado %}
     <!-- Usuarios que nao sao admin -->
     {% if  not session.admin %}

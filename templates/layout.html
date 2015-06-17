@@ -10,12 +10,20 @@
       </div>
       <br>
       <div class="col-md-10 nav nav-pills">
-        {% block nav %}
-        {% endblock %}
-
         {% if session.logado %}
           <li role="navigation"> <a href="{{ url_for('home') }}">Home</a> </li>
-          <li role="navigation"> <a href="{{ url_for('minhasPropostas') }}">Minhas propostas</a> </li>
+          {% if  session.logado %}
+          <!-- Usuarios que nao sao admin -->
+            {% if  not session.admin %}
+              <li role="navigation"> <a href="/catalogo">Catálogo de Jogos</a> </li>
+              <li role="navigation"> <a href="/meusjogos">Meus Jogos</a> </li>
+              <li role="navigation"> <a href="{{ url_for('minhasPropostas') }}">Minhas propostas</a>
+            {% else %}
+              <li role="navigation"> <a href="/gerenciarcatalogo">Catálogo Geral de Jogos</a> </li>
+              <li role="navigation"> <a href="/cadastrarfuncionario">Cadastro Funcionario</a> </li>
+            {% endif %}
+          {% endif %}
+          </li>
           <li role="navigation"> <a href="{{ url_for('logout') }}">Logout</a> </li>
         {% else %}
           <li role="navigation"> <a href="{{ url_for('cadastrar_cliente') }}">Cadastrar Cliente</a> </li>
