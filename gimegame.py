@@ -74,6 +74,8 @@ def editarjogo(id):
         jogo.genero = request.form['genero']
         jogo.console = request.form['console']
         jogo.ano = request.form['ano']
+        jogo.operacao = request.form['operacao']
+        jogo.valor = request.form['valor']
         usuario.EditarJogoPessoal(jogo)
         return redirect('meusjogos')
 
