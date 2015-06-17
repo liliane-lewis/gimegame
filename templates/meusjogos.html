@@ -12,7 +12,14 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h2> {{ meujogo.nome }} </h2>
-                        {{ meujogo.genero }} {{ meujogo.console }} {{ meujogo.ano }} {{ meujogo.operacao }} {{ meujogo.valor }}
+                        {{ meujogo.genero }} {{ meujogo.console }} {{ meujogo.ano }}
+                        <br><b>{{ meujogo.operacao }}
+
+                        {% if meujogo.operacao == 'Venda' %}
+                            R$ {{ meujogo.valor }}
+                        {% endif %}
+                        
+                        </b>
                     </div>
                     <br> <br>
                     <div class="col-md-4">
