@@ -56,6 +56,15 @@ def home():
 def comprar():
     return 'A ser implementado'
 
+@app.route('/adicionarjogo', methods=['GET', 'POST'])
+def adicionar_jogo():
+    if request.method == 'POST':
+        usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
+        jogo = Jogo(usuario.id, request.form['nome'], request.form['genero'], request.form['console'], request.form['ano'], request.form['operacao'], request.form['valor'])
+        usuario.IncluirJogosPessoal(jogo)
+        return redirect('meusjogos')
+    return render_template('adicionarjogo.html')
+
 @app.route('/editarjogo/<int:id>', methods=['GET', 'POST'])
 def editarjogo(id):
     jogo=Jogo.query.get(id)
@@ -79,6 +88,8 @@ def editarcatalogo(id):
         jogo.genero = request.form['genero']
         jogo.console = request.form['console']
         jogo.ano = request.form['ano']
+        jogo.operacao = request.form['operacao']
+        jogo.valor = request.form['valor']
         funcionario.EditarCatalogo(jogo)
         return redirect('gerenciarcatalogo')
 
@@ -103,16 +114,6 @@ def removercatalogo(id):
 
     #return render_template('editarjogo.html', meujogo=jogo)
 
-
-@app.route('/adicionarjogo', methods=['GET', 'POST'])
-def adicionar_jogo():
-    if request.method == 'POST':
-        usuario = Pessoa.query.filter(Pessoa.login == session['login']).first()
-        jogo = Jogo(usuario.id, request.form['nome'], request.form['genero'], request.form['console'], request.form['ano'])
-        usuario.IncluirJogosPessoal(jogo)
-        return redirect('meusjogos')
-    return render_template('adicionarjogo.html')
-
 @app.route('/cadastrarcliente', methods=['GET', 'POST'])
 def cadastrar_cliente():
     if request.method == 'POST':
@@ -120,7 +121,7 @@ def cadastrar_cliente():
         cliente = Cliente(request.form['login'], request.form['senha'], request.form['nome'], request.form['cpf'], \
                           request.form['email'], request.form['telefone'], request.form['endereco'] )
         cliente.CadastrarUsuario(cliente)
-        return redirect('meusjogos')
+        return redirect('home')
     return render_template('cadastrarcliente.html')
 
 @app.route('/cadastrarfuncionario', methods=['GET', 'POST'])

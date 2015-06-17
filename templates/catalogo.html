@@ -4,7 +4,7 @@
         <h2>Catálogo de Jogos</h2>
         <ul class="jogos">
             {% for jogo in jogos %}
-                <li><h2>{{ jogo.nome }}</h2>{{ jogo.genero }} {{ jogo.console }} {{ jogo.ano }} <a href="/comprar">Comprar</a>
+                <li><h2>{{ jogo.nome }}</h2>{{ jogo.genero }} {{ jogo.console }} {{ jogo.ano }} {{ jogo.operacao }} {{ jogo.valor }} <a href="/comprar">Comprar</a>
             {% else %}
                 <li><em>Nenhuma entrada.</em>
             {% endfor %}
