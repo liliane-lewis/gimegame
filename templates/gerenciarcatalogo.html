@@ -1,17 +1,38 @@
 {% extends "layout.html" %}
 {% block corpo %}
     {% if session.logado %}
-        <h2>Catálogo Geral de Jogos</h2>
-        <ul class="jogos">
-            {% for jogo in jogos %}
-                <li><h2>{{ jogo.nome }}</h2>{{ jogo.genero }} {{ jogo.console }} {{ jogo.ano }}
-                    <br><b>{{ jogo.operacao }}
 
-                        {% if jogo.operacao == 'Venda' %}
-                            R$ {{ jogo.valor }}
-                        {% endif %}
+    <div class="col-md-2"></div>
+    <div class="col-md-8 content content-lighter">
+        <div class="content-title text-center">
+            <h2>Catálogo Geral de Jogos</h2>
+        </div>
 
-                        </b> <a href="/editarcatalogo/{{jogo.id}}">Editar</a> <a href="/removercatalogo/{{jogo.id}}"">Excluir</a>
+    <ul class="jogos">
+        {% for jogo in jogos %}
+            <div class="row">
+                <div class="col-md-8">
+                <h2> {{ jogo.nome }} </h2>
+                {{ jogo.genero }} 
+                {{ jogo.console }} 
+                {{ jogo.ano }} 
+                <br> <b> {{ jogo.operacao }}
+                 
+                {% if jogo.operacao == 'Venda' %}
+                    R$ {{ jogo.valor }}
+                {% endif %}
+
+                </b>
+                </div>
+                
+                <br> <br>
+                
+                <div class="col-md-4">
+                    <a class="btn btn-default" href="ditarcatalogo/{{jogo.id}}">Editar</a>
+
+                    <a class="btn btn-danger" href="/removercatalogo/{{jogo.id}}">Excluir</a>
+                </div>
+            </div>
             {% else %}
                 <li><em>Nenhuma entrada.</em>
             {% endfor %}
