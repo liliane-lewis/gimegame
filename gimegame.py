@@ -140,7 +140,7 @@ def cadastrar_funcionario():
         funcionario = Funcionario(request.form['login'], request.form['senha'], request.form['nome'], request.form['cpf'], \
                           request.form['email'], request.form['telefone'], request.form['endereco'] )
         funcionario.CadastrarFuncionario(funcionario)
-        return redirect('catalogo')
+        return redirect('home')
     return render_template('cadastrarfuncionario.html')
 
 
