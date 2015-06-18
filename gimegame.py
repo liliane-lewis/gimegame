@@ -34,9 +34,13 @@ def exibir_meus_jogos():
 def home():
     return render_template('home.html')
 
-@app.route('/comprar')
-def comprar():
-    return 'A ser implementado'
+@app.route('/comprar/<int:id>')
+def comprar(id):
+    jogo = Jogo.query.get(id)
+    cliente = Cliente.query.filter(Cliente.login == session['login']).first()
+    cliente.FazerPropostaTroca(jogo)
+    return render_template('catalogo.html')
+
 
 @app.route('/trocar/<int:id>')
 def trocar(id):
