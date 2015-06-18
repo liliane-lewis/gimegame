@@ -57,11 +57,17 @@ def minhasPropostas():
 def aceitarProposta(id):
     proposta = Pedido.query.filter(Pedido.id == id).first()
     jogo = Jogo.query.filter(Jogo.id == proposta.item).first()
-    jogo.proprietario = proposta.cliente
-    db.session.merge(jogo)
+    vendedor = Cliente.query.filter(Cliente.login == session['login']
+    and Cliente.id == proposta.vendedor).first()
+    vendedor.aceitarProposta(jogo, proposta)
+    return render_template('propostas.html')
+
+
+@app.route('/recusarProposta/<int:id>')
+def recusarProposta(id):
+    proposta = Pedido.query.filter(Pedido.id == id).first()
     db.session.delete(proposta)
     db.session.commit()
-    flash(jogo)
     return render_template('propostas.html')
 
 @app.route('/adicionarjogo', methods=['GET', 'POST'])
