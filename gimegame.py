@@ -34,14 +34,6 @@ def exibir_meus_jogos():
 def home():
     return render_template('home.html')
 
-@app.route('/propostas')
-def minhasPropostas():
-    usuario = Cliente.query.filter(Cliente.login == session['login']).first()
-    propostas = pesquisa_pedidos_usuario(usuario.id)
-    como_cliente = propostas[0]
-    como_vendedor = propostas[1]
-    return render_template('propostas.html',como_cliente=como_cliente, como_vendedor=como_vendedor)
-
 @app.route('/comprar')
 def comprar():
     return 'A ser implementado'
@@ -52,6 +44,25 @@ def trocar(id):
     cliente = Cliente.query.filter(Cliente.login == session['login']).first()
     cliente.FazerPropostaTroca(jogo)
     return render_template('catalogo.html')
+
+@app.route('/propostas')
+def minhasPropostas():
+    usuario = Cliente.query.filter(Cliente.login == session['login']).first()
+    propostas = pesquisa_pedidos_usuario(usuario.id)
+    como_cliente = propostas[0]
+    como_vendedor = propostas[1]
+    return render_template('propostas.html',como_cliente=como_cliente, como_vendedor=como_vendedor)
+
+@app.route('/aceitarProposta/<int:id>')
+def aceitarProposta(id):
+    proposta = Pedido.query.filter(Pedido.id == id).first()
+    jogo = Jogo.query.filter(Jogo.id == proposta.item).first()
+    jogo.proprietario = proposta.cliente
+    db.session.merge(jogo)
+    db.session.delete(proposta)
+    db.session.commit()
+    flash(jogo)
+    return render_template('propostas.html')
 
 @app.route('/adicionarjogo', methods=['GET', 'POST'])
 def adicionar_jogo():
